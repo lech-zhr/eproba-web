@@ -12,13 +12,13 @@ import { HIT, dimmedFor } from "./styles";
 /** Punkt drogowskazu z przyciskiem dodającym go do „Twojej próby”. */
 export function SelectableItem({
   id,
-  slug,
+  source,
   text,
   hr,
   children,
 }: {
   id: string;
-  slug: string;
+  source: { slug: string; area: string; postawa?: string };
   /** Zwykły tekst punktu, pokazywany na liście wybranych drogowskazów. */
   text: string;
   hr?: boolean;
@@ -45,7 +45,7 @@ export function SelectableItem({
         size="xs"
         aria-pressed={selected}
         className="mt-1 sm:absolute sm:top-1.5 sm:right-0 sm:mt-0"
-        onClick={() => toggle({ id, slug, text })}
+        onClick={() => toggle({ id, ...source, text })}
       >
         {selected ? (
           <>

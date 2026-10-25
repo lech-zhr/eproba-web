@@ -65,11 +65,11 @@ function BlockView({ block }: { block: Block }) {
                 )}
               </>
             );
-            return block.selectable && item.id && block.slug ? (
+            return block.selectable && item.id && block.source ? (
               <SelectableItem
                 key={i}
                 id={item.id}
-                slug={block.slug}
+                source={block.source}
                 text={inlineText(item.c)}
                 hr={item.hr}
               >

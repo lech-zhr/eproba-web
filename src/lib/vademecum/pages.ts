@@ -1,5 +1,6 @@
 import { START_SLUG } from "./config";
 import { PAGES as RAW_PAGES } from "./content";
+import { inlineText } from "./text";
 import type { Block, GroupId, Page } from "./types";
 
 export const GROUPS: Record<GroupId, { number: string; title: string }> = {
@@ -23,23 +24,28 @@ function withIds(page: Page): Page {
   let n = 0;
   const nextId = () => `${page.slug}-${++n}`;
 
-  const mapBlocks = (blocks: Block[]): Block[] => blocks.map(mapBlock);
+  const mapBlocks = (blocks: Block[], postawa?: string): Block[] =>
+    blocks.map((block) => mapBlock(block, postawa));
 
-  const mapBlock = (block: Block): Block => {
+  const mapBlock = (block: Block, postawa?: string): Block => {
     switch (block.t) {
       case "p":
         return { ...block, id: nextId() };
       case "list":
         return {
           ...block,
-          slug: page.slug,
+          source: { slug: page.slug, area: page.title, postawa },
           items: block.items.map((item) => ({ ...item, id: nextId() })),
         };
       case "lede":
       case "kap":
       case "callout":
+        return { ...block, blocks: mapBlocks(block.blocks, postawa) };
       case "section":
-        return { ...block, blocks: mapBlocks(block.blocks) };
+        return {
+          ...block,
+          blocks: mapBlocks(block.blocks, inlineText(block.title)),
+        };
       case "stepper":
         return {
           ...block,

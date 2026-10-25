@@ -59,8 +59,8 @@ export type Block =
       items: ListItem[];
       /** Punkty drogowskazów, które można dodać do „Twojej próby”. */
       selectable?: boolean;
-      /** Strona, do której należy lista (uzupełniane w pages.ts). */
-      slug?: string;
+      /** Skąd pochodzi lista (uzupełniane w pages.ts). */
+      source?: { slug: string; area: string; postawa?: string };
     }
   | {
       t: "callout";
