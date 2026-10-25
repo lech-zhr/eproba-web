@@ -8,7 +8,7 @@ import {
   p,
   section,
   signature,
-  ul,
+  signposts,
 } from "../dsl";
 import type { Page } from "../types";
 
@@ -38,7 +38,7 @@ export const obszarKultura: Page = {
         title: ["Trzymam klasę i zachowuję kulturę osobistą"],
         idx: "01",
       },
-      ul(
+      signposts(
         li(
           "Znam zasady dobrego ubioru (np. wiem, jak łączyć kolory i wzory, jak dobrać rozmiar ubrania itp.), potrafię ubrać się na randkę lub formalną okazję.",
         ),
@@ -56,7 +56,7 @@ export const obszarKultura: Page = {
         title: ["Wypowiadam się w sposób zrozumiały"],
         idx: "02",
       },
-      ul(
+      signposts(
         li(
           "Potrafię przygotować i nagrać kilkuminutowe wystąpienie, poprawne pod kątem retorycznym (ustrukturyzowane, z użyciem gestykulacji, bez mówienia „yyy” itp.).",
         ),
@@ -79,7 +79,7 @@ export const obszarKultura: Page = {
         ],
         idx: "03",
       },
-      ul(
+      signposts(
         li(
           "Umiem przedstawić w dyskusji, w jaki sposób wybrane dzieła z kanonu lektur zmieniły moje spojrzenie na świat i wartości lub prawa nim rządzące.",
         ),
@@ -95,7 +95,7 @@ export const obszarKultura: Page = {
     ),
     section(
       { id: "kultura-p4", title: ["Wyrażam się za pomocą sztuki"], idx: "04" },
-      ul(
+      signposts(
         li(
           "Staram się uczyć technik artystycznych (również amatorsko) i tworzyć wybrane formy sztuki (np. uczę się gry na nowym instrumencie, założyłem zespół muzyczny z kolegami, gram w teatrze szkolnym, majsterkuję z elementem artystycznym).",
         ),

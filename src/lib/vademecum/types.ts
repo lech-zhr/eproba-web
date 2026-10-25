@@ -54,7 +54,14 @@ export type Block =
   | { t: "p"; id?: string; c: Inline[]; v?: "lead" | "signature" | "right" }
   | { t: "lede"; blocks: Block[] }
   | { t: "h3"; c: Inline[] }
-  | { t: "list"; items: ListItem[] }
+  | {
+      t: "list";
+      items: ListItem[];
+      /** Punkty drogowskazów, które można dodać do „Twojej próby”. */
+      selectable?: boolean;
+      /** Strona, do której należy lista (uzupełniane w pages.ts). */
+      slug?: string;
+    }
   | {
       t: "callout";
       kind: "info" | "note";

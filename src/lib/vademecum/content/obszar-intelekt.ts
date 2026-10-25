@@ -9,7 +9,7 @@ import {
   p,
   section,
   signature,
-  ul,
+  signposts,
   xref,
 } from "../dsl";
 import type { Page } from "../types";
@@ -37,7 +37,7 @@ export const obszarIntelekt: Page = {
         title: ["Uczę się metodycznie i regularnie"],
         idx: "01",
       },
-      ul(
+      signposts(
         li(
           "Mam stałe pory w ciągu dnia i tygodnia, kiedy regularnie się uczę (nie tylko do sprawdzianów).",
         ),
@@ -54,7 +54,7 @@ export const obszarIntelekt: Page = {
       lead(
         "Przykładam się do swoich obowiązków szkolnych, korzystam z szans, które daje mi szkoła, uczestniczę w życiu szkolnym.",
       ),
-      ul(
+      signposts(
         li(
           "Wybrałem przedmioty szkolne, na których się szczególnie koncentruję i w których wychodzę poza minimum szkolne (np. startuję w konkursach z tych przedmiotów, stawiam sobie wyższe cele dotyczące ocen, biorę udział w olimpiadach, zdobywam certyfikaty).",
         ),
@@ -69,7 +69,7 @@ export const obszarIntelekt: Page = {
       lead(
         "Staram się wyciągać wnioski, bazując na logicznych związkach między przesłankami rozumowania, a nie głównie na intuicji i odczuciach.",
       ),
-      ul(
+      signposts(
         li(
           "Potrafię napisać tekst, artykuł lub zrobić prezentację, w których przedstawiam swoją tezę i bronię jej argumentami.",
         ),
@@ -90,7 +90,7 @@ export const obszarIntelekt: Page = {
       lead(
         "Badam argumenty swoje oraz innych, nie odrzucam ani nie akceptuję poglądów bez zrozumienia ich podstaw.",
       ),
-      ul(
+      signposts(
         li(
           "Potrafię poprowadzić dyskusję lub przeprowadzić burzę mózgów (zgodnie z metodyką jej prowadzenia).",
         ),
@@ -110,7 +110,7 @@ export const obszarIntelekt: Page = {
       lead(
         "Zapoznaję się z różnymi światopoglądami i koncepcjami społeczno-gospodarczymi oraz potrafię je ocenić na bazie argumentów.",
       ),
-      ul(
+      signposts(
         li(
           "Potrafię zgłębić (np. przez przeczytanie książki) wybraną doktrynę społeczną (np. katolicką naukę społeczną, liberalizm, republikanizm, socjalizm) lub kwestię społeczną (np. problem migracji, sprawiedliwości społecznej, zasady pomocniczości, globalnych przepływów kapitału, aborcji).",
         ),
@@ -130,7 +130,7 @@ export const obszarIntelekt: Page = {
         title: ["Jestem dociekliwy i ciekawy świata"],
         idx: "06",
       },
-      ul(
+      signposts(
         li(
           "Mam potrzebę i wolę poznawania nowych rzeczy dogłębnie, a nie jedynie powierzchownie.",
         ),

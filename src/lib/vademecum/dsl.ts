@@ -39,6 +39,11 @@ export const h3 = (...c: Inline[]): Block => ({ t: "h3", c });
 export const li = (...c: Inline[]): ListItem => ({ c });
 export const hrLi = (...c: Inline[]): ListItem => ({ c, hr: true });
 export const ul = (...items: ListItem[]): Block => ({ t: "list", items });
+export const signposts = (...items: ListItem[]): Block => ({
+  t: "list",
+  items,
+  selectable: true,
+});
 
 export const callout = (
   kind: "info" | "note",

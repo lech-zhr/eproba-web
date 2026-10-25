@@ -8,7 +8,7 @@ import {
   p,
   section,
   signature,
-  ul,
+  signposts,
   xref,
 } from "../dsl";
 import type { Page } from "../types";
@@ -42,7 +42,7 @@ export const obszarOjczyzny: Page = {
         title: ["Znam polską historię i jej wpływ na teraźniejszość"],
         idx: "01",
       },
-      ul(
+      signposts(
         li("Potrafię opisać historię Polski od czasu I-go rozbioru."),
         li(
           "Potrafię zorganizować akcję patriotyczną towarzyszącą świętu narodowemu.",
@@ -57,7 +57,7 @@ export const obszarOjczyzny: Page = {
     ),
     section(
       { id: "ojczyzny-p2", title: ["Jestem lokalnym patriotą"], idx: "02" },
-      ul(
+      signposts(
         li(
           "Potrafię oprowadzić wycieczkę po miejscu mojego pochodzenia, prezentując elementy jego historii.",
         ),
@@ -75,7 +75,7 @@ export const obszarOjczyzny: Page = {
         title: ["Buduję braterstwo z ludźmi z Europy i z całego świata"],
         idx: "03",
       },
-      ul(
+      signposts(
         li("Potrafię godnie zaprezentować Polskę w międzynarodowym gronie."),
         li(
           "Potrafię zorganizować kilkudniową podróż do innego kraju, w ramach której poznam jego kulturę i historię.",
@@ -97,7 +97,7 @@ export const obszarOjczyzny: Page = {
         title: ["Jestem gotów do obrony ojczyzny"],
         idx: "04",
       },
-      ul(
+      signposts(
         li("Uczestniczę w działaniach Pogotowia Harcerek i Harcerzy."),
         li(
           "Umiem zachować spokój i opanowanie w sytuacji kryzysowej (np. w razie wypadku, ewakuacji).",
@@ -120,7 +120,7 @@ export const obszarOjczyzny: Page = {
         title: ["Jestem świadomym i aktywnym obywatelem"],
         idx: "05",
       },
-      ul(
+      signposts(
         li(
           "Znam polskie partie polityczne, ich programy, profile ideowe i poglądy na najważniejsze kwestie społeczno-gospodarcze.",
         ),

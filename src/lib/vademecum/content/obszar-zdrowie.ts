@@ -6,9 +6,9 @@ import {
   p,
   section,
   signature,
+  signposts,
   strong,
   sup,
-  ul,
 } from "../dsl";
 import type { Page } from "../types";
 
@@ -36,7 +36,7 @@ export const obszarZdrowie: Page = {
         title: ["Jestem wysportowany i sprawny fizycznie"],
         idx: "01",
       },
-      ul(
+      signposts(
         li("Potrafię zrealizować program treningowy."),
         li(
           "Planuję dzień tak, aby w wykonywanie codziennych obowiązków wplatać krótkie aktywności fizyczne (np. spacer, jazda na rowerze, ćwiczenia rozciągające).",
@@ -49,7 +49,7 @@ export const obszarZdrowie: Page = {
     ),
     section(
       { id: "zdrowie-p2", title: ["Dbam o swoje zdrowie"], idx: "02" },
-      ul(
+      signposts(
         li(
           "Wiem, jaka jest moja właściwa waga, jaka jest odpowiednia dla mnie dieta (np. ile kalorii powinienem spożywać dziennie) i trzymam się jej.",
         ),
@@ -68,7 +68,7 @@ export const obszarZdrowie: Page = {
         title: ["Dbam o swoją higienę i dobry wygląd"],
         idx: "03",
       },
-      ul(
+      signposts(
         li(
           "Regularnie się golę lub strzygę brodę, codziennie myję się i używam dezodorantu.",
         ),
@@ -83,7 +83,7 @@ export const obszarZdrowie: Page = {
         title: ["Zachowuję higienę cyfrową", sup("1")],
         idx: "04",
       },
-      ul(
+      signposts(
         li(
           "Wiem, jak działa uzależnienie od urządzeń ekranowych i jakie niesie skutki.",
         ),

@@ -1,4 +1,13 @@
-import { hrChip, hrLi, lede, li, p, section, signature, ul } from "../dsl";
+import {
+  hrChip,
+  hrLi,
+  lede,
+  li,
+  p,
+  section,
+  signature,
+  signposts,
+} from "../dsl";
 import type { Page } from "../types";
 
 export const obszarPasje: Page = {
@@ -24,7 +33,7 @@ export const obszarPasje: Page = {
         title: ["Rozwijam nowe umiejętności praktyczne"],
         idx: "01",
       },
-      ul(
+      signposts(
         li(
           "Biorę udział w kursach, warsztatach i/lub zajęciach indywidualnych.",
         ),
@@ -43,7 +52,7 @@ export const obszarPasje: Page = {
         ],
         idx: "02",
       },
-      ul(
+      signposts(
         li("Potrafię zarobić na swoje potrzeby 1000 zł."),
         li("Pracowałem fizycznie zarobkowo."),
         li(
@@ -58,7 +67,7 @@ export const obszarPasje: Page = {
         title: ["Mam zainteresowania, które efektywnie rozwijam"],
         idx: "03",
       },
-      ul(
+      signposts(
         li(
           "Dzielę się swoimi zainteresowaniami z innymi, uczę ich i dzielę się swoją pasją.",
         ),
@@ -73,7 +82,7 @@ export const obszarPasje: Page = {
         title: ["Wolny czas spędzam w sposób kreatywny i ambitny"],
         idx: "04",
       },
-      ul(
+      signposts(
         li(
           "Próbuję poszerzać swoje zainteresowania, zdobywając umiejętności i wiedzę z nowych dziedzin.",
         ),

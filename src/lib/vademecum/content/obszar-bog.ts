@@ -8,7 +8,7 @@ import {
   p,
   section,
   signature,
-  ul,
+  signposts,
   xref,
 } from "../dsl";
 import type { Page } from "../types";
@@ -42,7 +42,7 @@ export const obszarBog: Page = {
       lead(
         "Poszukuję rozumienia głębokich prawd o początku i celu rzeczywistości oraz źródle dobra, prawdy i piękna.",
       ),
-      ul(
+      signposts(
         li(
           "Przeczytałem współczesną książkę lub wybrane teksty dotyczące sensu istnienia, harmonii przyrody lub stworzenia świata.",
         ),
@@ -81,7 +81,7 @@ export const obszarBog: Page = {
       lead(
         "Europejska kultura została ufundowana na etyce chrześcijańskiej, która przenika również ruch harcerski – co wyrażone jest w Prawie i Przyrzeczeniu Harcerskim. Chrześcijanin widzi swoje życie jako odpowiedź człowieka na wezwanie Boga i łaskę bycia z Nim w jedności, dlatego zgłębia nauczanie moralne Kościoła i kształtuje swoje sumienie w oparciu o Dekalog i Przykazanie Miłości. Moralne życie człowieka i harcerza jest przywiązaniem do chrześcijańskich zasad etycznych niezależnie od wiary w źródło tych wartości.",
       ),
-      ul(
+      signposts(
         li(
           "Poznaję postać Jezusa przez współczesne książki i komentarze do Biblii.",
         ),
@@ -122,7 +122,7 @@ export const obszarBog: Page = {
       lead(
         "Kościoły chrześcijańskie przez wieki wytworzyły wielkie bogactwo różnych praktyk pobożnościowych oraz duchowości, które pomagają żyć w duchu własnego wyznania. Doświadczenie różnych praktyk i form duchowych jest też drogą poznania kultury chrześcijańskiej i otwarcia się na działanie Boga dla tych, którzy go poszukują.",
       ),
-      ul(
+      signposts(
         li(
           "Uczestniczyłem przynajmniej raz (w życiu lub przynajmniej raz świadomie) w całym Triduum Paschalnym.",
         ),
@@ -173,7 +173,7 @@ export const obszarBog: Page = {
       lead(
         "Wartości duchowe poznaje się przez dialog z bliźnimi, wspólne stawianie pytań i poszukiwanie odpowiedzi. Chrześcijanie wierzą też, że to sam Bóg objawił się wobec całego Kościoła i ustanowił się jego Głową. Dlatego pogłębiają oni swoją wiarę również przez aktywne uczestnictwo w życiu Kościoła i utożsamianie się z jego wspólnotą. Najważniejszą wspólnotową formą działania Boga wobec Jego Kościoła i Kościoła wobec Boga jest liturgia – życie nią jest szczególnym elementem relacji z Bogiem.",
       ),
-      ul(
+      signposts(
         li(
           "Brałem udział w służbie na wydarzeniu religijnym (np. Lednicy, ŚDM, Golgocie młodych itp).",
           xref(
@@ -222,7 +222,7 @@ export const obszarBog: Page = {
       lead(
         "Biblia jest fascynującym literackim zapisem korzeni cywilizacji, w której wszyscy wyrastamy niezależnie od naszych przekonań religijnych. Pismo Święte odczytywane zgodnie z Tradycją Kościoła jest dla wierzących w Boga podstawą wiary chrześcijańskiej. Znajomość Biblii jako Słowa Bożego jest drogą do Jego poznania.",
       ),
-      ul(
+      signposts(
         li(
           "Znam podstawową strukturę Nowego i Starego Testamentu, przeczytałem wybrane Ewangelie w całości.",
         ),

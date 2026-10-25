@@ -1,4 +1,13 @@
-import { hrChip, hrLi, lede, li, p, section, signature, ul } from "../dsl";
+import {
+  hrChip,
+  hrLi,
+  lede,
+  li,
+  p,
+  section,
+  signature,
+  signposts,
+} from "../dsl";
 import type { Page } from "../types";
 
 export const obszarRodzina: Page = {
@@ -24,7 +33,7 @@ export const obszarRodzina: Page = {
         title: ["Znam swoją rodzinę i moje pochodzenie"],
         idx: "01",
       },
-      ul(
+      signposts(
         li(
           "Znam historię mojej rodziny (w szczególności na tle wydarzeń historii powszechnej).",
         ),
@@ -39,7 +48,7 @@ export const obszarRodzina: Page = {
         title: ["Buduję głębokie, oparte na szczerości relacje z rodzicami"],
         idx: "02",
       },
-      ul(
+      signposts(
         li(
           "Wykonuję polecenie otrzymane od rodziców lub negocjuję jego zmianę, argumentując swoje zdanie w odpowiedzialny sposób.",
         ),
@@ -60,7 +69,7 @@ export const obszarRodzina: Page = {
         title: ["Jestem zaangażowany w życie mojej rodziny"],
         idx: "03",
       },
-      ul(
+      signposts(
         li(
           "Potrafię zorganizować wycieczkę dla rodziny lub jej części (np. w wyjazd z ojcem).",
         ),
@@ -82,7 +91,7 @@ export const obszarRodzina: Page = {
         title: ["Rozpoznaję swoje powołanie i przygotowuję się do niego"],
         idx: "04",
       },
-      ul(
+      signposts(
         li(
           "Potrafię przez pół dnia zaopiekować się małym dzieckiem (w tym zmienić pieluszkę, nakarmić je, umyć itp.).",
         ),

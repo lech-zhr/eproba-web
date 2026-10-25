@@ -1,4 +1,13 @@
-import { hrChip, hrLi, lede, li, p, section, signature, ul } from "../dsl";
+import {
+  hrChip,
+  hrLi,
+  lede,
+  li,
+  p,
+  section,
+  signature,
+  signposts,
+} from "../dsl";
 import type { Page } from "../types";
 
 export const obszarPrzyroda: Page = {
@@ -27,7 +36,7 @@ export const obszarPrzyroda: Page = {
         title: ["Czuję się częścią świata przyrody"],
         idx: "01",
       },
-      ul(
+      signposts(
         li(
           "Regularnie (np. raz w tygodniu) spędzam czas w otoczeniu przyrody (sportowo, rekreacyjnie, towarzysko), ograniczając korzystanie z rozpraszających dóbr cywilizacyjnych.",
         ),
@@ -52,7 +61,7 @@ export const obszarPrzyroda: Page = {
         title: ["Rozwijam swoją wiedzę o środowisku przyrodniczym"],
         idx: "02",
       },
-      ul(
+      signposts(
         li(
           "Korzystam z wiedzy naukowej dotyczącej zjawisk klimatycznych i przyrodniczych, weryfikuję źródła informacji w tej sprawie.",
         ),

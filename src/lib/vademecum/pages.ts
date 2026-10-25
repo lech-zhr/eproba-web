@@ -32,6 +32,7 @@ function withIds(page: Page): Page {
       case "list":
         return {
           ...block,
+          slug: page.slug,
           items: block.items.map((item) => ({ ...item, id: nextId() })),
         };
       case "lede":
