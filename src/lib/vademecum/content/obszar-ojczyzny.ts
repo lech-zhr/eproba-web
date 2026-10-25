@@ -134,8 +134,8 @@ export const obszarOjczyzny: Page = {
           "Uczestniczę w wyborach, decyzje podejmuję w duchu odpowiedzialności za Polskę.",
           xref(
             "Sprawdź również: „",
-            link("obszar-intelekt", "Rozum i intelekt"),
-            '">Kształtuję swój światopogląd” w obszarze „Rozum i intelekt”.',
+            link("obszar-intelekt", "Kształtuję swój światopogląd"),
+            "” w obszarze „Rozum i intelekt”.",
           ),
         ),
       ),
