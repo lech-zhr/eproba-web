@@ -2,14 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { MenuIcon } from "lucide-react";
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { MenuIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 
 import { SidebarContent } from "./sidebar";
@@ -17,22 +18,35 @@ import { SidebarContent } from "./sidebar";
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger
+    <Drawer open={open} onOpenChange={setOpen} swipeDirection="left">
+      <DrawerTrigger
         render={<Button variant="outline" size="sm" className="lg:hidden" />}
       >
         <MenuIcon />
         Spis treści
-      </SheetTrigger>
-      <SheetContent side="left" showCloseButton>
-        <SheetHeader className="sr-only">
-          <SheetTitle>Spis treści Vademecum</SheetTitle>
-          <SheetDescription>Nawigacja i wyszukiwarka</SheetDescription>
-        </SheetHeader>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader className="flex-row items-center justify-between">
+          <DrawerTitle>Spis treści Vademecum</DrawerTitle>
+          <DrawerClose
+            render={
+              <Button
+                aria-label="Zamknij spis treści"
+                variant="ghost"
+                size="icon"
+              />
+            }
+          >
+            <XIcon className="size-5" />
+          </DrawerClose>
+          <DrawerDescription className="sr-only">
+            Nawigacja i wyszukiwarka
+          </DrawerDescription>
+        </DrawerHeader>
         <div className="overflow-y-auto p-4">
           <SidebarContent onNavigate={() => setOpen(false)} />
         </div>
-      </SheetContent>
-    </Sheet>
+      </DrawerContent>
+    </Drawer>
   );
 }
