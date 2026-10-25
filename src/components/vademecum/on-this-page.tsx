@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
+import { TrialCard } from "./trial-card";
+
 const SCROLL_OFFSET = 110;
 
 export function OnThisPage({
@@ -30,7 +32,7 @@ export function OnThisPage({
   }, [sections]);
 
   return (
-    <aside className="sticky top-4 hidden xl:block">
+    <aside className="sticky top-4 hidden flex-col gap-6 xl:flex">
       {sections.length > 0 && (
         <nav aria-label="Na tej stronie" className="flex flex-col gap-2">
           <h2 className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
@@ -55,6 +57,7 @@ export function OnThisPage({
           </ul>
         </nav>
       )}
+      <TrialCard />
     </aside>
   );
 }

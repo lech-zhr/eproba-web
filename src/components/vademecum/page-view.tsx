@@ -6,6 +6,7 @@ import { MobileNav } from "./mobile-nav";
 import { ModeToggle } from "./mode-toggle";
 import { OnThisPage } from "./on-this-page";
 import { Pager } from "./pager";
+import { TrialCounter } from "./trial-counter";
 
 /** Treść jednej strony Vademecum: kolumna główna i spis „Na tej stronie”. */
 export function PageView({ page }: { page: Page }) {
@@ -20,7 +21,8 @@ export function PageView({ page }: { page: Page }) {
       <div className="min-w-0">
         <div className="bg-background/90 sticky top-0 z-20 mb-6 flex items-center justify-between gap-3 border-b py-2 backdrop-blur">
           <MobileNav />
-          <div className="ml-auto">
+          <div className="ml-auto flex items-center gap-2">
+            <TrialCounter />
             <ModeToggle />
           </div>
         </div>

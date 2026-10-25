@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import type { Block, Mode } from "@/lib/vademecum/types";
+import { inlineText } from "@/lib/vademecum/text";
+import type { Block } from "@/lib/vademecum/types";
 import { ArrowRightIcon } from "lucide-react";
 import { Fragment } from "react";
 
@@ -9,19 +10,9 @@ import { Callout } from "./callout";
 import { FaqAccordion } from "./faq-accordion";
 import { Funnel } from "./funnel";
 import { InlineContent } from "./inline";
+import { SelectableItem } from "./selectable-item";
+import { HIT, dimmedFor } from "./styles";
 import { WatraDiagram } from "./watra-diagram";
-
-/** Stylowanie elementu, do którego przewija wynik wyszukiwania. */
-export const HIT = "scroll-mt-24 rounded-sm data-hit:animate-hit";
-
-const DIM = "transition-opacity";
-const DIM_IN_HO =
-  "group-data-[mode=ho]/vad:opacity-45 group-data-[mode=ho]/vad:hover:opacity-85";
-const DIM_IN_HR =
-  "group-data-[mode=hr]/vad:opacity-45 group-data-[mode=hr]/vad:hover:opacity-85";
-
-const dimmedFor = (mode?: Mode) =>
-  mode === "hr" ? cn(DIM, DIM_IN_HO) : mode === "ho" ? cn(DIM, DIM_IN_HR) : "";
 
 const PARAGRAPH = {
   default: "leading-7",
@@ -60,23 +51,40 @@ function BlockView({ block }: { block: Block }) {
     case "list":
       return (
         <ul className="marker:text-muted-foreground flex list-disc flex-col gap-2 pl-5">
-          {block.items.map((item, i) => (
-            <li
-              key={i}
-              id={item.id}
-              className={cn(HIT, "leading-7", item.hr && dimmedFor("hr"))}
-            >
-              <InlineContent content={item.c} />
-              {item.hr && (
-                <Badge
-                  variant="secondary"
-                  className="mx-1.5 h-4 px-1.5 align-middle text-[0.65rem]"
-                >
-                  HR
-                </Badge>
-              )}
-            </li>
-          ))}
+          {block.items.map((item, i) => {
+            const content = (
+              <>
+                <InlineContent content={item.c} />
+                {item.hr && (
+                  <Badge
+                    variant="secondary"
+                    className="mx-1.5 h-4 px-1.5 align-middle text-[0.65rem]"
+                  >
+                    HR
+                  </Badge>
+                )}
+              </>
+            );
+            return block.selectable && item.id && block.slug ? (
+              <SelectableItem
+                key={i}
+                id={item.id}
+                slug={block.slug}
+                text={inlineText(item.c)}
+                hr={item.hr}
+              >
+                {content}
+              </SelectableItem>
+            ) : (
+              <li
+                key={i}
+                id={item.id}
+                className={cn(HIT, "leading-7", item.hr && dimmedFor("hr"))}
+              >
+                {content}
+              </li>
+            );
+          })}
         </ul>
       );
 
