@@ -1,4 +1,5 @@
 import { CreateWorksheetFromTemplate } from "@/app/worksheets/create/create-worksheet-from-template";
+import { CreateWorksheetFromVademecum } from "@/app/worksheets/create/create-worksheet-from-vademecum";
 import { WorksheetEditor } from "@/components/worksheets/editor/worksheet-editor";
 import { fetchCurrentUser, fetchTemplate } from "@/lib/server-api";
 import type { Metadata } from "next";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 interface WorksheetCreatePageProps {
   searchParams: Promise<{
     templateId?: string;
+    from?: string;
     redirectTo?: string;
   }>;
 }
@@ -18,7 +20,7 @@ interface WorksheetCreatePageProps {
 const WorksheetCreatePage = async ({
   searchParams,
 }: WorksheetCreatePageProps) => {
-  const { templateId, redirectTo } = await searchParams;
+  const { templateId, from, redirectTo } = await searchParams;
 
   const { user, error: userError } = await fetchCurrentUser();
   if (userError) {
@@ -35,6 +37,15 @@ const WorksheetCreatePage = async ({
       <CreateWorksheetFromTemplate
         template={template!}
         redirectTo={redirectTo}
+        currentUser={user!}
+      />
+    );
+  }
+
+  if (from === "vademecum") {
+    return (
+      <CreateWorksheetFromVademecum
+        redirectTo={redirectTo || "/worksheets"}
         currentUser={user!}
       />
     );

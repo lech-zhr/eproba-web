@@ -1,16 +1,20 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardAction,
   CardContent,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { pageHref } from "@/lib/vademecum/config";
-import { trialItemsAtom } from "@/state/vademecum-trial";
-import { useAtomValue } from "jotai";
+import { clearTrialAtom, trialItemsAtom } from "@/state/vademecum-trial";
+import { useAtomValue, useSetAtom } from "jotai";
+import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 
 import { useVademecum } from "./vademecum-context";
@@ -25,6 +29,7 @@ const shorten = (text: string) =>
 /** „Twoja próba”: lista drogowskazów wybranych z różnych stron. */
 export function TrialCard() {
   const items = useAtomValue(trialItemsAtom);
+  const clear = useSetAtom(clearTrialAtom);
   const { reveal } = useVademecum();
 
   return (
@@ -57,6 +62,20 @@ export function TrialCard() {
           </ul>
         )}
       </CardContent>
+      {items.length > 0 && (
+        <CardFooter className="flex-col items-stretch gap-2">
+          <Link
+            href="/worksheets/create?from=vademecum"
+            className={cn(buttonVariants(), "w-full")}
+          >
+            Przejdź do kreatora próby
+            <ArrowRightIcon />
+          </Link>
+          <Button variant="ghost" size="sm" onClick={clear}>
+            Wyczyść wybór
+          </Button>
+        </CardFooter>
+      )}
     </Card>
   );
 }
