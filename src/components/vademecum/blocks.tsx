@@ -23,8 +23,6 @@ const DIM_IN_HR =
 const dimmedFor = (mode?: Mode) =>
   mode === "hr" ? cn(DIM, DIM_IN_HO) : mode === "ho" ? cn(DIM, DIM_IN_HR) : "";
 
-const reportAttr = (report: boolean) => (report ? { "data-report": "" } : {});
-
 const PARAGRAPH = {
   default: "leading-7",
   lead: "text-muted-foreground max-w-prose leading-7",
@@ -32,27 +30,15 @@ const PARAGRAPH = {
   right: "text-right",
 } as const;
 
-export function Blocks({
-  blocks,
-  report = true,
-}: {
-  blocks: Block[];
-  report?: boolean;
-}) {
-  return blocks.map((block, i) => (
-    <BlockView key={i} block={block} report={report} />
-  ));
+export function Blocks({ blocks }: { blocks: Block[] }) {
+  return blocks.map((block, i) => <BlockView key={i} block={block} />);
 }
 
-function BlockView({ block, report }: { block: Block; report: boolean }) {
+function BlockView({ block }: { block: Block }) {
   switch (block.t) {
     case "p":
       return (
-        <p
-          id={block.id}
-          {...reportAttr(report && block.v !== "signature")}
-          className={cn(HIT, PARAGRAPH[block.v ?? "default"])}
-        >
+        <p id={block.id} className={cn(HIT, PARAGRAPH[block.v ?? "default"])}>
           <InlineContent content={block.c} />
         </p>
       );
@@ -60,7 +46,7 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
     case "lede":
       return (
         <div className="bg-card flex flex-col gap-3 rounded-xl border p-5 shadow-sm md:text-base">
-          <Blocks blocks={block.blocks} report={report} />
+          <Blocks blocks={block.blocks} />
         </div>
       );
 
@@ -78,7 +64,6 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
             <li
               key={i}
               id={item.id}
-              {...reportAttr(report)}
               className={cn(HIT, "leading-7", item.hr && dimmedFor("hr"))}
             >
               <InlineContent content={item.c} />
@@ -100,10 +85,10 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
         <ol className="marker:text-muted-foreground flex list-decimal flex-col gap-3 pl-6 marker:font-semibold">
           {block.items.map((item, i) => (
             <li key={i} className="flex flex-col gap-2 leading-7">
-              <span id={item.id} {...reportAttr(report)} className={HIT}>
+              <span id={item.id} className={HIT}>
                 <InlineContent content={item.c} />
               </span>
-              {item.blocks && <Blocks blocks={item.blocks} report={report} />}
+              {item.blocks && <Blocks blocks={item.blocks} />}
             </li>
           ))}
         </ol>
@@ -112,7 +97,7 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
     case "callout":
       return (
         <Callout kind={block.kind} title={block.title}>
-          <Blocks blocks={block.blocks} report={report && !block.noReport} />
+          <Blocks blocks={block.blocks} />
         </Callout>
       );
 
@@ -123,7 +108,7 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
             <ArrowRightIcon className="size-4 shrink-0" />
             {block.label}
           </div>
-          <Blocks blocks={block.blocks} report={report} />
+          <Blocks blocks={block.blocks} />
         </div>
       );
 
@@ -160,7 +145,7 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
                     >
                       {step.title}
                     </h3>
-                    <Blocks blocks={step.blocks} report={report} />
+                    <Blocks blocks={step.blocks} />
                   </div>
                 </li>
                 {step.gapAfter && (
@@ -183,7 +168,7 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
             label: step.label,
             width: step.width,
             body: (
-              <span {...reportAttr(report)}>
+              <span>
                 <InlineContent content={step.c} />
               </span>
             ),
@@ -202,7 +187,7 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
             question: <InlineContent content={item.q} />,
             answer: (
               <div className="flex flex-col gap-3 leading-7">
-                <Blocks blocks={item.a} report={report} />
+                <Blocks blocks={item.a} />
               </div>
             ),
           }))}
@@ -211,7 +196,7 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
 
     case "watra":
       return (
-        <WatraDiagram id={block.id} report={report}>
+        <WatraDiagram id={block.id}>
           <InlineContent content={block.caption} />
         </WatraDiagram>
       );
@@ -222,7 +207,6 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
           items={block.items.map((item) => ({
             corner: item.pos,
             id: item.id,
-            report,
             content: <InlineContent content={item.c} />,
           }))}
         />
@@ -245,7 +229,7 @@ function BlockView({ block, report }: { block: Block; report: boolean }) {
             )}
             <InlineContent content={block.title} />
           </h2>
-          <Blocks blocks={block.blocks} report={report} />
+          <Blocks blocks={block.blocks} />
         </section>
       );
   }

@@ -41,18 +41,15 @@ const FEATHER =
 /** Znak Watry Wędrowniczej z opisanymi strzałkami (pola i cele pracy). */
 export function WatraDiagram({
   id,
-  report = true,
   children,
 }: {
   id?: string;
-  report?: boolean;
   children: ReactNode;
 }) {
   return (
     <Card className="gap-4 p-4">
       <p
         id={id}
-        data-report={report ? "" : undefined}
         className="text-muted-foreground data-hit:animate-hit scroll-mt-24 border-b border-dashed pb-4 text-center text-sm"
       >
         {children}

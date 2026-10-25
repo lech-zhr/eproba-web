@@ -6,7 +6,6 @@ import { MobileNav } from "./mobile-nav";
 import { ModeToggle } from "./mode-toggle";
 import { OnThisPage } from "./on-this-page";
 import { Pager } from "./pager";
-import { ReportLayer } from "./report-layer";
 
 /** Treść jednej strony Vademecum: kolumna główna i spis „Na tej stronie”. */
 export function PageView({ page }: { page: Page }) {
@@ -26,20 +25,18 @@ export function PageView({ page }: { page: Page }) {
           </div>
         </div>
         <div className="max-w-3xl">
-          <ReportLayer slug={page.slug}>
-            <article className="flex flex-col gap-4">
-              <header className="mb-2 flex flex-col gap-3">
-                <p className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wider uppercase">
-                  <span className="bg-foreground size-1.5 rounded-full" />
-                  {page.eyebrow}
-                </p>
-                <h1 className="text-3xl font-bold tracking-tight text-balance md:text-4xl">
-                  {page.title}
-                </h1>
-              </header>
-              <Blocks blocks={page.blocks} />
-            </article>
-          </ReportLayer>
+          <article className="flex flex-col gap-4">
+            <header className="mb-2 flex flex-col gap-3">
+              <p className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wider uppercase">
+                <span className="bg-foreground size-1.5 rounded-full" />
+                {page.eyebrow}
+              </p>
+              <h1 className="text-3xl font-bold tracking-tight text-balance md:text-4xl">
+                {page.title}
+              </h1>
+            </header>
+            <Blocks blocks={page.blocks} />
+          </article>
           <Pager page={page} />
         </div>
       </div>

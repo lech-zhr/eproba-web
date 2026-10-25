@@ -87,7 +87,6 @@ export function AreasDiagram({
   items: {
     corner: AreaCorner;
     id?: string;
-    report?: boolean;
     content: ReactNode;
   }[];
 }) {
@@ -113,11 +112,10 @@ export function AreasDiagram({
           height={926}
           className="absolute top-[25.45%] left-[38.125%] w-[23.75%] @max-[560px]:top-[27.88%] @max-[560px]:left-[31%] @max-[560px]:w-[38%] dark:invert"
         />
-        {items.map(({ corner, id, report = true, content }) => (
+        {items.map(({ corner, id, content }) => (
           <p
             key={corner}
             id={id}
-            data-report={report ? "" : undefined}
             className={cn(
               "text-muted-foreground data-hit:animate-hit [&_strong]:text-foreground absolute w-[36%] text-[clamp(0.78rem,2.5cqw,1.05rem)] leading-snug @max-[560px]:w-[46%] @max-[560px]:text-xs",
               CORNER_CLASS[corner],

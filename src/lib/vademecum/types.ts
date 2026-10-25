@@ -59,7 +59,6 @@ export type Block =
       t: "callout";
       kind: "info" | "note";
       title?: string;
-      noReport?: boolean;
       blocks: Block[];
     }
   | { t: "stepper"; steps: Step[] }

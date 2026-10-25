@@ -129,7 +129,7 @@ export const probaZadanie: Page = {
     ),
     callout(
       "info",
-      { noReport: true },
+      {},
       p(
         "Zobacz pełny zestaw drogowskazów w ",
         link("obszar-intelekt", "Rozum i intelekt"),

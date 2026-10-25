@@ -29,11 +29,7 @@ export function FaqAccordion({ items }: { items: FaqEntry[] }) {
           value={item.id}
           className="mb-2 rounded-lg border px-4 not-last:border-b"
         >
-          <AccordionTrigger
-            id={item.id}
-            data-report=""
-            className="scroll-mt-24 text-base"
-          >
+          <AccordionTrigger id={item.id} className="scroll-mt-24 text-base">
             {item.question}
           </AccordionTrigger>
           <AccordionContent keepMounted hiddenUntilFound className="text-base">

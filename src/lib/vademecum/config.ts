@@ -1,9 +1,5 @@
-export const REPORT_EMAIL = "lech.pastwa+vademecum@zhr.pl";
-
 export const PDF_URL =
   "https://drive.google.com/file/d/1Q4sVe_5xGJZ3iNGZBo4oypMZZAYHrCft/view?usp=sharing";
-
-export const CONTENT_DIR = "src/lib/vademecum/content";
 
 export const MIN_QUERY_LENGTH = 2;
 export const MAX_RESULTS = 60;

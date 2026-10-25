@@ -42,7 +42,7 @@ export const ul = (...items: ListItem[]): Block => ({ t: "list", items });
 
 export const callout = (
   kind: "info" | "note",
-  opts: { title?: string; noReport?: boolean },
+  opts: { title?: string },
   ...blocks: Block[]
 ): Block => ({ t: "callout", kind, ...opts, blocks });
 
