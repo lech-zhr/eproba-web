@@ -45,6 +45,20 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+@theme {
+  --animate-hit: hit-flash 2.5s ease-out;
+
+  @keyframes hit-flash {
+    0%,
+    40% {
+      background-color: color-mix(in oklch, var(--warning) 30%, transparent);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
