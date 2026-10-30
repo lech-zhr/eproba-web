@@ -17,6 +17,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { NavTree } from "./nav-tree";
+import { SearchableNav } from "./searchable-nav";
 
 /**
  * Pozycja „Vademecum” w menu głównym na telefonie: odnośnik do strony
@@ -59,8 +60,10 @@ export function VademecumMobileNav({ nav }: { nav: NavData }) {
           <ChevronDownIcon className="transition-transform group-aria-expanded/vademecum:rotate-180" />
         </CollapsibleTrigger>
       </div>
-      <CollapsibleContent className="pt-1 pl-3">
-        <NavTree nav={nav} inDrawer />
+      <CollapsibleContent className="pt-2 pl-3">
+        <SearchableNav container="drawer">
+          <NavTree nav={nav} container="drawer" />
+        </SearchableNav>
       </CollapsibleContent>
     </Collapsible>
   );

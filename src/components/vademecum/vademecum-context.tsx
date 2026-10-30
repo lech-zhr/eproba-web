@@ -8,9 +8,6 @@ interface VademecumContextValue {
   mode: Mode;
   setMode: (mode: Mode) => void;
   nav: NavData;
-  /** Ostatnio otwarty wynik wyszukiwania; strony reagują, rozwijając swoje elementy. */
-  hit: { id: string; n: number } | null;
-  reveal: (id: string) => void;
 }
 
 export const VademecumContext = createContext<VademecumContextValue | null>(

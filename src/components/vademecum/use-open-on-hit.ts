@@ -1,6 +1,6 @@
+import { hitAtom } from "@/state/vademecum-hit";
+import { useAtomValue } from "jotai";
 import { useState } from "react";
-
-import { useVademecum } from "./vademecum-context";
 
 interface Openable {
   id: string;
@@ -13,7 +13,7 @@ interface Openable {
  * element wewnątrz pozycji rozwija ją, także gdy strona dopiero się montuje.
  */
 export function useOpenOnHit(items: Openable[], initiallyOpen: string[] = []) {
-  const { hit } = useVademecum();
+  const hit = useAtomValue(hitAtom);
   const owner = (id: string | undefined) =>
     id ? items.find((item) => item.hitIds.includes(id)) : undefined;
 

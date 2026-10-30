@@ -2,10 +2,11 @@
 
 import { MAX_RESULTS, pageHref } from "@/lib/vademecum/config";
 import type { Range, SearchResults as Results } from "@/lib/vademecum/search";
-import Link from "next/link";
+import { revealAtom } from "@/state/vademecum-hit";
+import { useSetAtom } from "jotai";
 import { type ReactNode, useEffect, useState } from "react";
 
-import { useVademecum } from "./vademecum-context";
+import { ContainerLink, type NavContainer } from "./nav-link";
 
 const plural = (n: number) => {
   if (n === 1) return "wynik";
@@ -32,8 +33,14 @@ function Highlighted({ text, ranges }: { text: string; ranges: Range[] }) {
   return <>{nodes}</>;
 }
 
-export function SearchResults({ query }: { query: string }) {
-  const { reveal } = useVademecum();
+export function SearchResults({
+  query,
+  container,
+}: {
+  query: string;
+  container: NavContainer;
+}) {
+  const reveal = useSetAtom(revealAtom);
   // Indeks z treścią ładujemy dopiero przy pierwszym wyszukiwaniu.
   const [searchModule, setSearchModule] = useState<SearchModule | null>(null);
   useEffect(() => {
@@ -75,7 +82,8 @@ export function SearchResults({ query }: { query: string }) {
                 {heading}
               </h3>
             )}
-            <Link
+            <ContainerLink
+              container={container}
               href={href}
               onClick={() => reveal(entry.id)}
               className="hover:bg-muted flex flex-col gap-0.5 rounded-md px-2 py-1.5"
@@ -96,7 +104,7 @@ export function SearchResults({ query }: { query: string }) {
                   ranges={searchModule.matchRanges(entry.folded, results.terms)}
                 />
               </span>
-            </Link>
+            </ContainerLink>
           </div>
         );
       })}

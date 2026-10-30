@@ -5,7 +5,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { DrawerClose } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 import { pageHref } from "@/lib/vademecum/config";
 import type { NavData, NavPage } from "@/lib/vademecum/pages";
@@ -23,9 +22,10 @@ import {
   ShieldIcon,
   SparklesIcon,
 } from "lucide-react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { type ReactElement, useState } from "react";
+import { useState } from "react";
+
+import { ContainerLink, type NavContainer } from "./nav-link";
 
 const AREA_ICONS: Record<string, LucideIcon> = {
   "obszar-bog": ChurchIcon,
@@ -50,16 +50,21 @@ function NavLink({
   page,
   number,
   active,
-  inDrawer,
+  container,
 }: {
   page: NavPage;
   number?: string;
   active: boolean;
-  inDrawer: boolean;
+  container: NavContainer;
 }) {
   const Icon = AREA_ICONS[page.slug];
-  const content = (
-    <>
+  return (
+    <ContainerLink
+      container={container}
+      href={pageHref(page.slug)}
+      aria-current={active ? "page" : undefined}
+      className={rowClass(active)}
+    >
       {number && (
         <span className="text-muted-foreground w-5 shrink-0 text-xs tabular-nums">
           {number}
@@ -67,28 +72,7 @@ function NavLink({
       )}
       {Icon && <Icon className="size-4 shrink-0" />}
       {page.navTitle}
-    </>
-  );
-  const link: ReactElement = (
-    <Link
-      href={pageHref(page.slug)}
-      aria-current={active ? "page" : undefined}
-      className={rowClass(active)}
-    />
-  );
-  // W menu głównym (Drawer) wybór strony zamyka panel.
-  return inDrawer ? (
-    <DrawerClose nativeButton={false} render={link}>
-      {content}
-    </DrawerClose>
-  ) : (
-    <Link
-      href={pageHref(page.slug)}
-      aria-current={active ? "page" : undefined}
-      className={rowClass(active)}
-    >
-      {content}
-    </Link>
+    </ContainerLink>
   );
 }
 
@@ -96,18 +80,20 @@ function NavGroup({
   number,
   title,
   pages,
-  inDrawer,
+  container,
 }: {
   number: string;
   title: string;
   pages: NavPage[];
-  inDrawer: boolean;
+  container: NavContainer;
 }) {
   const pathname = usePathname();
   // W wąskim menu otwieramy tylko grupę z bieżącą stroną. Wartość ustalamy raz
   // przy montowaniu, bo Collapsible nie lubi zmiany `defaultOpen` w locie.
   const [defaultOpen] = useState(
-    () => !inDrawer || pages.some((page) => pathname === pageHref(page.slug)),
+    () =>
+      container === "sidebar" ||
+      pages.some((page) => pathname === pageHref(page.slug)),
   );
   return (
     <Collapsible defaultOpen={defaultOpen}>
@@ -124,7 +110,7 @@ function NavGroup({
             key={page.slug}
             page={page}
             active={pathname === pageHref(page.slug)}
-            inDrawer={inDrawer}
+            container={container}
           />
         ))}
       </CollapsibleContent>
@@ -138,10 +124,10 @@ function NavGroup({
  */
 export function NavTree({
   nav,
-  inDrawer = false,
+  container = "sidebar",
 }: {
   nav: NavData;
-  inDrawer?: boolean;
+  container?: NavContainer;
 }) {
   const pathname = usePathname();
   return (
@@ -153,7 +139,7 @@ export function NavTree({
             page={entry.page}
             number={entry.number}
             active={pathname === pageHref(entry.page.slug)}
-            inDrawer={inDrawer}
+            container={container}
           />
         ) : (
           <NavGroup
@@ -161,7 +147,7 @@ export function NavTree({
             number={entry.number}
             title={entry.title}
             pages={entry.pages}
-            inDrawer={inDrawer}
+            container={container}
           />
         ),
       )}
