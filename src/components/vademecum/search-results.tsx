@@ -32,13 +32,7 @@ function Highlighted({ text, ranges }: { text: string; ranges: Range[] }) {
   return <>{nodes}</>;
 }
 
-export function SearchResults({
-  query,
-  onNavigate,
-}: {
-  query: string;
-  onNavigate?: () => void;
-}) {
+export function SearchResults({ query }: { query: string }) {
   const { reveal } = useVademecum();
   // Indeks z treścią ładujemy dopiero przy pierwszym wyszukiwaniu.
   const [searchModule, setSearchModule] = useState<SearchModule | null>(null);
@@ -83,10 +77,7 @@ export function SearchResults({
             )}
             <Link
               href={href}
-              onClick={() => {
-                reveal(entry.id);
-                onNavigate?.();
-              }}
+              onClick={() => reveal(entry.id)}
               className="hover:bg-muted flex flex-col gap-0.5 rounded-md px-2 py-1.5"
             >
               {(entry.group || entry.hr) && (

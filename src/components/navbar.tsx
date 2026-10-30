@@ -28,9 +28,11 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { UserHydrator } from "@/components/user-hydrator";
+import { VademecumMobileNav } from "@/components/vademecum/vademecum-mobile-nav";
 import { RequiredFunctionLevel } from "@/lib/const";
 import { fetchCurrentUser } from "@/lib/server-api";
 import { cn } from "@/lib/utils";
+import { buildNav } from "@/lib/vademecum/pages";
 import { Organization } from "@/types/team";
 import { User } from "@/types/user";
 import { LogOutIcon, MenuIcon, UserIcon, XIcon } from "lucide-react";
@@ -43,6 +45,8 @@ type NavItem = {
   subItems?: NavItem[];
   external?: boolean;
   kind?: "bug-report";
+  /** Własna zawartość pozycji w menu na telefonie (zamiast zwykłego odnośnika). */
+  mobileMenu?: "vademecum";
   access?: (user?: User) => boolean;
 };
 
@@ -105,6 +109,7 @@ const MAIN_NAV_ITEMS: NavItem[] = [
   {
     title: "Vademecum",
     href: "/vademecum",
+    mobileMenu: "vademecum",
   },
 ];
 
@@ -336,26 +341,30 @@ export async function Navbar() {
               </DrawerHeader>
 
               <div className="flex flex-1 flex-col gap-3 overflow-y-auto">
-                {filteredMainNav.map((item) => (
-                  <div key={item.href} className="flex flex-col gap-1">
-                    <DrawerClose
-                      nativeButton={false}
-                      render={
-                        <MobileNavItem
-                          item={item}
-                          header={(item.subItems?.length ?? 0) > 0}
-                        />
-                      }
-                    />
-                    {item.subItems?.map((subItem) => (
+                {filteredMainNav.map((item) =>
+                  item.mobileMenu === "vademecum" ? (
+                    <VademecumMobileNav key={item.href} nav={buildNav()} />
+                  ) : (
+                    <div key={item.href} className="flex flex-col gap-1">
                       <DrawerClose
-                        key={subItem.href}
                         nativeButton={false}
-                        render={<MobileNavItem item={subItem} />}
+                        render={
+                          <MobileNavItem
+                            item={item}
+                            header={(item.subItems?.length ?? 0) > 0}
+                          />
+                        }
                       />
-                    ))}
-                  </div>
-                ))}
+                      {item.subItems?.map((subItem) => (
+                        <DrawerClose
+                          key={subItem.href}
+                          nativeButton={false}
+                          render={<MobileNavItem item={subItem} />}
+                        />
+                      ))}
+                    </div>
+                  ),
+                )}
 
                 <div className="mt-4 border-t pt-2">
                   <h5 className="text-muted-foreground mb-2 px-3 text-xs">

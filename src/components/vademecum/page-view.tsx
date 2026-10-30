@@ -2,7 +2,6 @@ import { inlineText } from "@/lib/vademecum/text";
 import type { Page } from "@/lib/vademecum/types";
 
 import { Blocks } from "./blocks";
-import { MobileNav } from "./mobile-nav";
 import { ModeToggle } from "./mode-toggle";
 import { OnThisPage } from "./on-this-page";
 import { Pager } from "./pager";
@@ -18,11 +17,8 @@ export function PageView({ page }: { page: Page }) {
   return (
     <>
       <div className="min-w-0">
-        <div className="bg-background/90 sticky top-0 z-20 mb-6 flex items-center justify-between gap-3 border-b py-2 backdrop-blur">
-          <MobileNav />
-          <div className="ml-auto">
-            <ModeToggle />
-          </div>
+        <div className="bg-background/90 sticky top-0 z-20 mb-6 flex items-center justify-end gap-3 border-b py-2 backdrop-blur">
+          <ModeToggle />
         </div>
         <div className="max-w-3xl">
           <article className="flex flex-col gap-4">
